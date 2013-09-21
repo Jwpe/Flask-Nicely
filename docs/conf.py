@@ -57,10 +57,10 @@ import pkg_resources
 try:
     release = pkg_resources.get_distribution('flask_nicely').version
 except pkg_resources.DistributionNotFound:
-    print 'To build the documentation, The distribution information of sandman'
-    print 'Has to be available.  Either install the package into your'
+    print 'To build the documentation, The distribution information of '
+    print 'Flask-Nicely has to be available. Either install the package into your'
     print 'development environment or run "setup.py develop" to setup the'
-    print 'metadata.  A virtualenv is recommended!'
+    print 'metadata. A virtualenv is recommended!'
     sys.exit(1)
 del pkg_resources
 
@@ -109,7 +109,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'nature'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the

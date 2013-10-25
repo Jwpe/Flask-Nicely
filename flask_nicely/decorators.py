@@ -1,4 +1,4 @@
-from flask import json, make_response, current_app as app
+from flask import json, make_response
 from functools import wraps
 
 from .errors import ErrorResponse

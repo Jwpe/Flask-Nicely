@@ -1,8 +1,13 @@
 
 class ErrorResponse(Exception):
 
-    def __init__(self, error_message=None, status="500", **kwargs):
+    status = "500"
+
+    def __init__(self, error_message=None, **kwargs):
 
         Exception.__init__(self)
         self.error_message = error_message or "Error"
-        self.status = status
+
+class NotFound(ErrorResponse):
+
+    status = "404"

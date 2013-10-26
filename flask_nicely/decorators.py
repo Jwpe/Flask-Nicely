@@ -12,7 +12,7 @@ def nice_json(func):
         error = None
 
         try:
-            data = func( *args, **kwargs)
+            data = func(*args, **kwargs)
 
         except ErrorResponse as e:
 

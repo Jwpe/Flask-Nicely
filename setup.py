@@ -46,7 +46,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Application Frameworks',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         ],
-    tests_require=['pytest'],
+    tests_require=['pytest', 'Flask-Testing'],
     test_suite='test',
     cmdclass = {'test': PyTest},
 )

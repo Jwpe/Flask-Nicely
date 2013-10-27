@@ -56,3 +56,36 @@ class TestFlaskNicely(TestCase):
 
         self.assertEqual(500, response.status_code)
 
+    def test_exception_debug(self):
+        """
+        Test that if the decorated function throws an unspecified exception,
+        then the decorator will raise it if the app is in debug mode.
+        """
+        self.app.config['DEBUG'] = True
+
+        @nice_json
+        def error_function():
+            raise Exception("I am an exception")
+
+        with self.assertRaises(Exception):
+            response = error_function()
+
+    def test_exception_live(self):
+        """
+        Test that if the decorated function throws an unspecified exception,
+        then the decorator will return a JSON response of status 500 if the app
+        is not in debug mode.
+        """
+        self.app.config['DEBUG'] = False
+
+        @nice_json
+        def error_function():
+            raise Exception("I am an exception")
+
+        response = error_function()
+
+        self.assertEqual(
+            {"data": None, "status": "500", "error": "Internal Server Error"},
+            response.json)
+
+        self.assertEqual(500, response.status_code)

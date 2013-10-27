@@ -25,7 +25,10 @@ def throw_404():
 @app.route('/error/exception')
 @flask_nicely.nice_json
 def throw_exception():
-
+    """
+    This view will produce a normal traceback with the app in DEBUG mode,
+    or a pretty 500 JSON response when app.config['DEBUG'] is False.
+    """
     raise Exception("I am an exception")
 
 if __name__ == '__main__':

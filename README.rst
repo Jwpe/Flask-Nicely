@@ -34,9 +34,16 @@ The Flask-Nicely decorator is used as follows:
 
         return data
 
-Wrapping our view function in the decorator will cause the view to return a
-`200 OK` JSON response containing `"status": "200"`, `"error": null` and `"data"`
-containing whatever is returned from the view, assuming it is able to be JSONified.
+Wrapping our view function in the decorator will cause the view to return the
+following 200 response:
+
+.. code:: json
+
+    {
+      "data": data,
+      "error": null,
+      "status": "200",
+    }
 
 Flask-Nicely also allows you to throw HTTP exceptions which will result in a
 properly formed HTTP error response. Custom exception messages may be entered:
@@ -73,3 +80,12 @@ the root directory using:
 .. code:: python
 
     python examples/app.py
+
+Testing
+-------
+
+To run the tests for the project using py.test, simply run:
+
+.. code:: python
+
+    python setup.py test

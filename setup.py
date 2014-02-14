@@ -6,8 +6,6 @@ import codecs
 import os
 import sys
 
-import flask_nicely
-
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -31,7 +29,7 @@ Docs can be found at http://flask-nicely.readthedocs.org/
 
 setup(
     name='Flask-Nicely',
-    version=flask_nicely.__version__,
+    version='0.1.2',
     url='http://github.com/jwpe/flask-nicely/',
     license='BSD',
     author='Jonathan Evans',

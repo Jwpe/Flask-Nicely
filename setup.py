@@ -19,7 +19,13 @@ class PyTest(TestCommand):
         errno = pytest.main(self.test_args)
         sys.exit(errno)
 
-long_description = 'Placeholder'
+long_description = """
+Flask-Nicely consists of a simple decorator with which to wrap Flask
+functions that return data in order to turn them into pretty, consistent
+JSON responses. It also provides several built in HTTP exceptions which can
+be raised in a Flask function in order to return the corresponding HTTP
+error response.
+"""
 
 setup(
     name='Flask-Nicely',
@@ -28,7 +34,7 @@ setup(
     license='BSD',
     author='Jonathan Evans',
     author_email='jwpevans@gmail.com',
-    description='Pretty JSON responses for API building.',
+    description='Pretty Flask JSON responses for API building.',
     long_description=long_description,
     packages=['flask_nicely'],
     install_requires = ['Flask'],

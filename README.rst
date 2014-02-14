@@ -43,6 +43,13 @@ properly formed HTTP error response. Custom exception messages may be entered:
 
 .. code:: python
 
+    from flask import Flask
+
+    import flask_nicely
+    from flask_nicely.errors import NotFound
+
+    app = Flask(__name__)
+
     @app.route('/error/404')
     @flask_nicely.nice_json
     def throw_404():

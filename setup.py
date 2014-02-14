@@ -38,8 +38,8 @@ setup(
     author_email='jwpevans@gmail.com',
     description='Pretty Flask JSON responses for API building.',
     long_description=long_description,
-    packages=['flask_nicely'],
     install_requires = ['Flask'],
+    packages=['flask_nicely'],
     include_package_data=True,
     platforms='any',
     classifiers = [

@@ -3,8 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to flask_nicely's documentation!
-========================================
+What is Flask-Nicely?
+=====================
+
+Flask-Nicely consists of a simple decorator with which to wrap Flask
+functions that return data in order to turn them into pretty, consistent
+JSON responses. It also provides several built in HTTP exceptions which can
+be raised in a Flask function in order to return the corresponding HTTP
+error response.
 
 Contents:
 

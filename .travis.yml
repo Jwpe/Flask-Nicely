@@ -5,4 +5,4 @@ install:
     - "pip install -r requirements.txt --use-mirrors"
     - "pip install coverage"
 script:
-    - "coverage run --source=flask-nicely setup.py test"
+    - "coverage run --source=flask_nicely setup.py test"

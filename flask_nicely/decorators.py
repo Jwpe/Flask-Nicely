@@ -5,6 +5,19 @@ from .errors import ErrorResponse
 
 def nice_json(func):
 
+    """A decorator which returns a pretty jsonified response when wrapped
+    around a Flask view function.
+
+    :param func: the Flask view function to be wrapped
+    :rtype: :class:`flask.Response`
+    :raises: :exc:`flask_nicely.errors.Unauthorized`,
+        :exc:`flask_nicely.errors.Forbidden`,
+        :exc:`flask_nicely.errors.NotFound`,
+        :exc:`flask_nicely.errors.ServerError`,
+        :exc:`flask_nicely.errors.GatewayTimeout`
+    """
+
+
     @wraps(func)
     def json_data_or_error(*args, **kwargs):
 

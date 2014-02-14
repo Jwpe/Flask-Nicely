@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Flask-Nicely'
-copyright = u'2013, Jonathan Evans'
+copyright = u'2014, Jonathan Evans'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -208,7 +208,7 @@ latex_elements = {
 #  author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'flask_nicely.tex', u'Flask-Nicely Documentation',
-   u'Author', 'manual'),
+   u'Jonathan Evans', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -238,7 +238,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'flask_nicely', u'flask_nicely Documentation',
-     [u'Author'], 1)
+     [u'Jonathan Evans'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -252,8 +252,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
   ('index', 'flask_nicely', u'flask_nicely Documentation',
-   u'Author', 'flask_nicely', 'One line description of project.',
-   'Miscellaneous'),
+   u'Jonathan Evans', 'flask_nicely', 'Pretty JSON responses for API building.',
+   'Web'),
 ]
 
 # Documents to append as an appendix to all manuals.
@@ -273,9 +273,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = u'flask_nicely'
-epub_author = u'Author'
-epub_publisher = u'Author'
-epub_copyright = u'2013, Author'
+epub_author = u'Jonathan Evas'
+epub_publisher = u'Jonathan Evas'
+epub_copyright = u'2014, Jonathan Evas'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

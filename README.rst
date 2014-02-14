@@ -3,9 +3,8 @@ Flask-Nicely
 
 .. image:: https://travis-ci.org/Jwpe/Flask-Nicely.png?branch=develop
     :target: https://travis-ci.org/Jwpe/Flask-Nicely
-.. image:: https://coveralls.io/repos/Jwpe/Flask-Nicely/badge.png
-    :target: https://coveralls.io/r/Jwpe/Flask-Nicely
-
+.. image:: https://coveralls.io/repos/Jwpe/Flask-Nicely/badge.png?branch=develop
+    :target: https://coveralls.io/r/Jwpe/Flask-Nicely?branch=develop
 
 Flask-Nicely consists of a simple decorator with which to wrap Flask
 functions that return data in order to turn them into pretty, consistent

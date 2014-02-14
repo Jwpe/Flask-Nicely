@@ -1,6 +1,8 @@
 Flask-Nicely
 ============
 
+.. image:: https://travis-ci.org/Jwpe/Flask-Nicely.png?branch=develop   :target: https://travis-ci.org/Jwpe/Flask-Nicely
+
 Flask-Nicely consists of a simple decorator with which to wrap Flask
 functions that return data in order to turn them into pretty, consistent
 JSON responses. It also provides several built in HTTP exceptions which can

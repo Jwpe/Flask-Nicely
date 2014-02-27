@@ -1,7 +1,8 @@
 from flask import Flask
 from flask.ext.testing import TestCase
 
-from flask_nicely import nice_json, ErrorResponse
+from flask_nicely import nice_json
+from flask_nicely.errors import NotFound
 
 class TestFlaskNicely(TestCase):
 
@@ -32,29 +33,30 @@ class TestFlaskNicely(TestCase):
         response = success_function()
 
         self.assertEqual(
-            {"data": data, "status": "200", "error": None},
+            {'data': data, 'status': 200, 'error': None},
             response.json)
 
         self.assertEqual(200, response.status_code)
 
-    def test_500(self):
+    def test_404(self):
         """
-        Test that if the decorated function throws a generic ErrorResponse
-        error, a JSON response of status 500 is returned with a generic error
+        Test that if the decorated function throws a NotFound
+        error, a JSON response of status 404 is returned with a generic error
         message.
         """
+        self.app.config['DEBUG'] = True
 
         @nice_json
         def error_function():
-            raise ErrorResponse
+            raise NotFound("Could not find the grail!")
 
         response = error_function()
 
         self.assertEqual(
-            {"data": None, "status": "500", "error": "Error"},
+            {'data': None, 'status': 404, 'error': "Could not find the grail!"},
             response.json)
 
-        self.assertEqual(500, response.status_code)
+        self.assertEqual(404, response.status_code)
 
     def test_exception_debug(self):
         """
@@ -85,7 +87,7 @@ class TestFlaskNicely(TestCase):
         response = error_function()
 
         self.assertEqual(
-            {"data": None, "status": "500", "error": "Internal Server Error"},
+            {'data': None, 'status': 500, 'error': "Internal Server Error"},
             response.json)
 
         self.assertEqual(500, response.status_code)

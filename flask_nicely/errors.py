@@ -1,45 +1,58 @@
+try:
+    from httplib import responses # Python 2.x
+except ImportError:
+    from http.client import responses # Python 3.x
 
-class ErrorResponse(Exception):
+from flask import jsonify
 
-    """A generic error response from which the HTTP error responses inherit."""
+class HTTPError(Exception):
 
-    status = "500"
-    error_message = "Error"
+    """A generic error mixin from which the HTTP error responses inherit."""
 
-    def __init__(self, error_message=None, **kwargs):
+    status_code = None
+
+    def __init__(self, error_message='', payload=None, *args, **kwargs):
 
         """
         :param error_message: An optional custom error message that will be
-        returned in an HTTP response.
+        returned in an HTTP response. If not specified, the generic httplib
+        response will be returned.
+        :param payload: An optional dictionary of additional information
+        to include in the JSON response.
         """
 
-        Exception.__init__(self)
-        self.error_message = error_message or self.error_message
+        super(HTTPError, self).__init__(*args, **kwargs)
+        self.error_message = error_message or responses[self.status_code]
+        self.payload = payload or {}
 
-class Unauthorized(ErrorResponse):
+    def get_response(self):
+
+        self.payload.update(status=self.status_code)
+        self.payload.update(error=self.error_message)
+        self.payload.update(data=None)
+
+        response = jsonify(self.payload)
+        response.status_code = self.status_code
+
+        return response
+
+
+class Unauthorized(HTTPError):
     """A 401 Unauthorized HTTP error."""
-    status = "401"
-    error_message = "Unauthorized"
+    status_code = 401
 
-
-class Forbidden(ErrorResponse):
+class Forbidden(HTTPError):
     """A 403 Forbidden HTTP error."""
-    status = "403"
-    error_message = "Forbidden"
+    status_code = 403
 
-
-class NotFound(ErrorResponse):
+class NotFound(HTTPError):
     """A 404 Not Found HTTP error."""
-    status = "404"
-    error_message = "Not Found"
+    status_code = 404
 
-
-class ServerError(ErrorResponse):
+class ServerError(HTTPError):
     """A 500 Internal Server Error HTTP error."""
-    error_message = "Internal Server Error"
+    status_code = 500
 
-
-class GatewayTimeout(ErrorResponse):
+class GatewayTimeout(HTTPError):
     """A 504 Gateway Timeout HTTP error."""
-    status = "504"
-    error_message = "Gateway Timeout"
+    status_code = 504

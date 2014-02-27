@@ -40,23 +40,69 @@ class TestFlaskNicely(TestCase):
 
     def test_404(self):
         """
-        Test that if the decorated function throws a NotFound
-        error, a JSON response of status 404 is returned with a generic error
-        message.
+        Test that if the decorated function throws a NotFound error, a JSON
+        response of status 404 is returned with a generic error message.
         """
-        self.app.config['DEBUG'] = True
 
         @nice_json
         def error_function():
-            raise NotFound("Could not find the grail!")
+            raise NotFound()
 
         response = error_function()
 
         self.assertEqual(
-            {'data': None, 'status': 404, 'error': "Could not find the grail!"},
+            {'data': None, 'status': 404, 'error': "Not Found"},
             response.json)
 
         self.assertEqual(404, response.status_code)
+
+    def test_404_custom_message(self):
+        """
+        Test that if the decorated function throws a NotFound error with a
+        specified message, a JSON response of status 404 is returned with
+        'error' set to the custom message.
+        """
+
+        @nice_json
+        def error_function():
+            raise NotFound("Could not find the Grail!")
+
+        response = error_function()
+
+        self.assertEqual(
+            {'data': None, 'status': 404, 'error': "Could not find the Grail!"},
+            response.json)
+
+        self.assertEqual(404, response.status_code)
+
+    def test_404_custom_payload(self):
+        """
+        Test that if the decorated function throws a NotFound error with an
+        additional payload, a JSON response of status 404 is returned with
+        extra keys from the payload included.
+        """
+
+        test_payload = {
+            'error_detail': "The resource that you requested was not found on the server",
+            'documentation': "http://www.flask-nicely.readthedocs.org",
+        }
+
+        @nice_json
+        def error_function():
+            raise NotFound(payload=test_payload)
+
+        response = error_function()
+
+        self.assertEqual({
+            'data': None, 'status': 404, 'error': "Not Found",
+            'error_detail': "The resource that you requested was not found on the server",
+            'documentation': "http://www.flask-nicely.readthedocs.org",
+            },
+            response.json)
+
+        self.assertEqual(404, response.status_code)
+
+
 
     def test_exception_debug(self):
         """

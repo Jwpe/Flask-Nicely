@@ -47,7 +47,7 @@ following 200 response:
     {
       "data": data,
       "error": null,
-      "status": "200",
+      "status": 200,
     }
 
 Flask-Nicely also allows you to throw HTTP exceptions which will result in a
@@ -75,7 +75,7 @@ This will result in the following 404 response:
     {
       "data": null,
       "error": "Could not find the grail!",
-      "status": "404"
+      "status": 404
     }
 
 
@@ -94,3 +94,10 @@ To run the tests for the project using py.test, simply run:
 .. code:: python
 
     python setup.py test
+
+For multi-version testing, install and run tox:
+
+.. code:: python
+
+    pip install tox
+    tox

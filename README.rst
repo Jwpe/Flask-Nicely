@@ -95,6 +95,29 @@ This will result in the following 404 response:
       "status": 404
     }
 
+Exceptions can accept a payload, which is an arbitrary dictionary to be sent
+as part of the JSON response. For example:
+
+.. code:: python
+
+   test_payload = {
+       'error_detail': "The resource that you requested was not found on the server",
+       'documentation': "http://www.flask-nicely.readthedocs.org",
+   }
+
+   raise NotFound(payload=test_payload)
+
+Will result in a 404 response containing:
+
+.. code:: json
+
+    {
+      "data": null,
+      "error": "Not Found",
+      "status": 404,
+      "error_detail": "The resource that you requested was not found on the server",
+      "documentation": "http://www.flask-nicely.readthedocs.org",
+    }
 
 An example app can be found in the examples directory, and can be run from
 the root directory using:

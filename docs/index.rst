@@ -1,14 +1,10 @@
-.. include:: ../README.rst
+.. include:: ../README
 
-Links
------
+.. include:: api.rst
 
-.. toctree::
-   :maxdepth: 4
-
-   api
+.. include:: ../CHANGELOG
 
 Documentation Index
--------------------
+===================
 
 * :ref:`genindex`

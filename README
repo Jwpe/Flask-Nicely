@@ -12,10 +12,18 @@ JSON responses. It also provides several built in HTTP exceptions which can
 be raised in a Flask function in order to return the corresponding HTTP
 error response.
 
-Documentation
--------------
-
 Docs can be found at http://flask-nicely.readthedocs.org/
+
+Installation
+------------
+
+Flask-Nicely is available on `PyPI
+<https://pypi.python.org/pypi/Flask-Nicely/>`_. The best way to install is
+via pip, as follows:
+
+.. code:: bash
+
+    pip install flask-nicely
 
 Usage
 -----
@@ -91,13 +99,13 @@ Testing
 
 To run the tests for the project using py.test, simply run:
 
-.. code:: python
+.. code:: bash
 
     python setup.py test
 
 For multi-version testing, install and run tox:
 
-.. code:: python
+.. code:: bash
 
     pip install tox
     tox

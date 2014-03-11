@@ -1,8 +1,8 @@
-.. include:: ../README
+.. include:: ../README.rst
 
 .. include:: api.rst
 
-.. include:: ../CHANGELOG
+.. include:: ../CHANGELOG.rst
 
 Documentation Index
 ===================

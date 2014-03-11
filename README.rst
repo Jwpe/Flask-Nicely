@@ -14,6 +14,13 @@ error response.
 
 Docs can be found at http://flask-nicely.readthedocs.org/
 
+Dependencies
+------------
+
+Flask-Nicely is tested on both Python 2.7 and Python 3.3. It has only one
+dependency: `Flask
+<http://flask.pocoo.org/>`_ itself.
+
 Installation
 ------------
 
@@ -24,6 +31,8 @@ via pip, as follows:
 .. code:: bash
 
     pip install flask-nicely
+
+Alternatively, you can download the source code directly from GitHub.
 
 Usage
 -----

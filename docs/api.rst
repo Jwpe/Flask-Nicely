@@ -1,5 +1,5 @@
-flask_nicely package
-====================
+API
+===
 
 Flask-Nicely is comprised of two main modules, the :mod:`decorator` module and
 the :mod:`errors` module.

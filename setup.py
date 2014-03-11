@@ -29,7 +29,7 @@ Docs can be found at http://flask-nicely.readthedocs.org/
 
 setup(
     name='Flask-Nicely',
-    version='0.1.2',
+    version='0.2.0',
     url='http://github.com/jwpe/flask-nicely/',
     license='BSD',
     author='Jonathan Evans',
@@ -42,6 +42,7 @@ setup(
     platforms='any',
     classifiers = [
         'Programming Language :: Python',
+        'Programming Language :: Python :: 3',
         'Development Status :: 4 - Beta',
         'Natural Language :: English',
         'Environment :: Web Environment',

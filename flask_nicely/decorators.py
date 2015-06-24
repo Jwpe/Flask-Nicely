@@ -1,9 +1,11 @@
-from flask import jsonify, current_app
 from functools import wraps
 
-from .errors import HTTPError, ServerError
+from .handlers import DefaultSuccessHandler, DefaultExceptionHandler
+from .renderers import JSONRenderer
 
-def nice_json(func):
+
+def nice_json(func, success_handler=DefaultSuccessHandler,
+        exc_handler=DefaultExceptionHandler, renderer=JSONRenderer):
 
     """A decorator which returns a pretty jsonified response when wrapped
     around a Flask view function.
@@ -12,23 +14,17 @@ def nice_json(func):
     :rtype: :class:`flask.Response`
     """
 
-
     @wraps(func)
     def json_data_or_error(*args, **kwargs):
 
         try:
             data = func(*args, **kwargs)
-
-        except HTTPError as e:
-            return e.get_response()
+            response = success_handler(renderer_class=renderer).handle(data)
 
         except Exception as e:
 
-            if current_app.config['DEBUG']:
-                raise e
-            else:
-                return ServerError().get_response()
+            response = exc_handler(renderer_class=renderer).handle_exception(e)
 
-        return jsonify(status=200, error=None, data=data)
+        return response
 
     return json_data_or_error

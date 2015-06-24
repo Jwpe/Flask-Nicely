@@ -1,9 +1,8 @@
 try:
-    from httplib import responses # Python 2.x
+    from httplib import responses  # Python 2.x
 except ImportError:
-    from http.client import responses # Python 3.x
+    from http.client import responses  # Python 3.x
 
-from flask import jsonify
 
 class HTTPError(Exception):
 
@@ -25,33 +24,26 @@ class HTTPError(Exception):
         self.error_message = error_message or responses[self.status_code]
         self.payload = payload or {}
 
-    def get_response(self):
-
-        self.payload.update(status=self.status_code)
-        self.payload.update(error=self.error_message)
-        self.payload.update(data=None)
-
-        response = jsonify(self.payload)
-        response.status_code = self.status_code
-
-        return response
-
 
 class Unauthorized(HTTPError):
     """A 401 Unauthorized HTTP error."""
     status_code = 401
 
+
 class Forbidden(HTTPError):
     """A 403 Forbidden HTTP error."""
     status_code = 403
+
 
 class NotFound(HTTPError):
     """A 404 Not Found HTTP error."""
     status_code = 404
 
+
 class ServerError(HTTPError):
     """A 500 Internal Server Error HTTP error."""
     status_code = 500
+
 
 class GatewayTimeout(HTTPError):
     """A 504 Gateway Timeout HTTP error."""

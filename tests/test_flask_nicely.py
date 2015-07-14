@@ -4,6 +4,7 @@ from flask.ext.testing import TestCase
 from flask_nicely import nice_json
 from flask_nicely.errors import NotFound
 
+
 class TestFlaskNicely(TestCase):
 
     def create_app(self):
@@ -11,7 +12,6 @@ class TestFlaskNicely(TestCase):
         app = Flask(__name__)
         app.config['TESTING'] = True
         return app
-
 
     def test_success(self):
         """
@@ -24,7 +24,7 @@ class TestFlaskNicely(TestCase):
             "name": "Arthur, King of the Britons",
             "quest": "To seek the Holy Grail",
             "air-speed velocity of unladen swallow": "An African or a European swallow?",
-            }
+        }
 
         @nice_json
         def success_function():
@@ -97,12 +97,10 @@ class TestFlaskNicely(TestCase):
             'data': None, 'status': 404, 'error': "Not Found",
             'error_detail': "The resource that you requested was not found on the server",
             'documentation': "http://www.flask-nicely.readthedocs.org",
-            },
+        },
             response.json)
 
         self.assertEqual(404, response.status_code)
-
-
 
     def test_exception_debug(self):
         """
@@ -116,7 +114,7 @@ class TestFlaskNicely(TestCase):
             raise Exception("I am an exception")
 
         with self.assertRaises(Exception):
-            response = error_function()
+            error_function()
 
     def test_exception_live(self):
         """
@@ -125,6 +123,7 @@ class TestFlaskNicely(TestCase):
         is not in debug mode.
         """
         self.app.config['DEBUG'] = False
+        self.app.config['TESTING'] = False
 
         @nice_json
         def error_function():

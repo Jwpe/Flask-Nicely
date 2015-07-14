@@ -42,7 +42,7 @@ class DefaultExceptionHandler(BaseHandler):
 
         else:
 
-            if current_app.config['DEBUG']:
+            if current_app.config['DEBUG'] or current_app.config['TESTING']:
                 raise e
             else:
                 return self.handle_exception(ServerError())

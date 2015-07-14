@@ -11,6 +11,9 @@ def nice_json(func, success_handler=DefaultSuccessHandler,
     around a Flask view function.
 
     :param func: the Flask view function to be wrapped
+    :param success_handler: a handler which transforms a successful result from the view function into a :class:`flask.Response`
+    :param exc_handler: a handler which transforms an error thrown by the view function into a :class:`flask.Response`
+    :param renderer: a renderer which governs the output format of the :class:`flask.Response`
     :rtype: :class:`flask.Response`
     """
 
